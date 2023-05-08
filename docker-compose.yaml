@@ -1,0 +1,16 @@
+version: '2'
+services:
+  python:
+    image: jatin1008/python_api_docker
+    ports:
+      - 192.168.0.116:5000:5000
+    volumes:
+      - ./instance:/instance
+  react:
+    image: jatin1008/client-mp
+    ports:
+      - 192.168.0.116:3000:3000
+    environment:
+      - REACT_APP_API_ADDRESS=http://192.168.0.116:5000
+      - REACT_APP_STRIPE_ADDRESS=http://192.168.0.116:3001
+
